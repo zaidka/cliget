@@ -1,0 +1,47 @@
+{
+  "name": "cliget",
+  "fullName": "cliget",
+  "description": "Download secured files using wget or curl",
+  "author": "Zaid Abdulla <zkam83@gmail.com>",
+  "license": "MPL 2.0",
+  "version": "1.0",
+  "id": "cliget@zaidabdulla.com",
+  "icon": "data/icon.png",
+  "icon64": "data/icon64.png",
+
+  "preferences" : [{
+    "name": "use_double_quotes",
+    "title": "Double quotation marks",
+    "description": "Use double quotation marks (\") for command-line arguments. Enable this if you plan to *run* the commands on a Windows machine.",
+    "type": "bool",
+    "value": false
+  },
+  {
+    "name": "wget",
+    "title": "Wget",
+    "description": "Disable this if you don't use Wget to avoid cluttering the UI.",
+    "type": "bool",
+    "value": true
+  },
+  {
+    "name": "wget.options",
+    "title": "Extra Wget options",
+    "description": "Add extra command-line arguments to be appended to the Wget command.",
+    "type": "string",
+    "value": "-c"
+  },
+  {
+    "name": "curl",
+    "title": "cURL",
+    "description": "Generate cURL commands.",
+    "type": "bool",
+    "value": false
+  },
+  {
+    "name": "curl.options",
+    "title": "Extra cURL options",
+    "description": "Add extra command-line arguments to be appended to the cURL command.",
+    "type": "string",
+    "value": "-L"
+  }]
+}
