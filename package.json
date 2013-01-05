@@ -17,25 +17,11 @@
     "value": false
   },
   {
-    "name": "wget",
-    "title": "Wget",
-    "description": "Disable this if you don't use Wget to avoid cluttering the UI.",
-    "type": "bool",
-    "value": true
-  },
-  {
-    "name": "wget.options",
-    "title": "Extra Wget options",
-    "description": "Add extra command-line arguments to be appended to the Wget command.",
-    "type": "string",
-    "value": "-c"
-  },
-  {
     "name": "curl",
     "title": "cURL",
     "description": "Generate cURL commands.",
     "type": "bool",
-    "value": false
+    "value": true
   },
   {
     "name": "curl.options",
@@ -43,5 +29,19 @@
     "description": "Add extra command-line arguments to be appended to the cURL command.",
     "type": "string",
     "value": "-L"
+  },
+  {
+    "name": "wget",
+    "title": "Wget",
+    "description": "Generate Wget commands.",
+    "type": "bool",
+    "value": false
+  },
+  {
+    "name": "wget.options",
+    "title": "Extra Wget options",
+    "description": "Add extra command-line arguments to be appended to the Wget command.",
+    "type": "string",
+    "value": "-c"
   }]
 }
