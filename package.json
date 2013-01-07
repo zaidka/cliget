@@ -1,8 +1,9 @@
 {
   "name": "cliget",
   "fullName": "cliget",
-  "description": "Download secured files using wget or curl",
-  "author": "Zaid Abdulla <zkam83@gmail.com>",
+  "description": "Download protected files using curl or wget",
+  "author": "Zaid Abdulla (http://zaidabdulla.com)",
+  "homepage": "https://github.com/zaidka/cliget",
   "license": "MPL 2.0",
   "version": "1.0",
   "id": "cliget@zaidabdulla.com",
@@ -12,7 +13,7 @@
   "preferences" : [{
     "name": "use_double_quotes",
     "title": "Double quotation marks",
-    "description": "Use double quotation marks (\") for command-line arguments. Enable this if you plan to *run* the commands on a Windows machine.",
+    "description": "Use double quotation marks (\") for command-line arguments. Enable this if you plan to *execute* the commands on a Windows machine.",
     "type": "bool",
     "value": false
   },
