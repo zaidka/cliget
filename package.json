@@ -18,6 +18,13 @@
     "value": false
   },
   {
+    "name": "remove_accept_encoding",
+    "title": "Remove Accept-Encoding header",
+    "description": "Remove Accept-Encoding header from request headers to avoid compressed response from server.",
+    "type": "bool",
+    "value": true
+  },
+  {
     "name": "curl",
     "title": "cURL",
     "description": "Generate cURL commands.",
