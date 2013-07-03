@@ -10,6 +10,8 @@
   "icon": "data/icon.png",
   "icon64": "data/icon64.png",
 
+  "permissions": {"private-browsing": true},
+
   "preferences" : [{
     "name": "use_double_quotes",
     "title": "Double quotation marks",
