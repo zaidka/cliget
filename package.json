@@ -53,5 +53,19 @@
     "description": "Add extra command-line arguments to be appended to the Wget command.",
     "type": "string",
     "value": "-c"
+  },
+  {
+    "name": "aria2",
+    "title": "aria2",
+    "description": "Generate aria2 commands.",
+    "type": "bool",
+    "value": false
+  },
+  {
+    "name": "aria2.options",
+    "title": "Extra aria2 options",
+    "description": "Add extra command-line arguments to be appended to the aria2c command.",
+    "type": "string",
+    "value": ""
   }]
 }
