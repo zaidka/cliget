@@ -1,6 +1,6 @@
 {
   "name": "cliget",
-  "fullName": "cliget",
+  "title": "cliget",
   "description": "Download protected files using cur, wget, or aria2",
   "author": "Zaid Abdulla (http://zaidabdulla.com)",
   "homepage": "https://github.com/zaidka/cliget",
