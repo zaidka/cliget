@@ -10,3 +10,8 @@ You can add your own parameters to be included in the commands. Set that under "
 *If you use curl or wget on Windows*, make sure to enable "cliget.use_double_quotes" in about:config because Windows doesn't support single quotes. If you use cygwin, however, you don't need to enable this option.
 
 **Please be aware** of potential security and privacy implications from cookies exposed in the download commands.
+
+Development
+-----------
+
+This addon is built with the [Addon-SDK](https://addons.mozilla.org/en-US/developers/builder). Install and activate the SDK and then run `cfx xpi` to build the "cliget.xpi" addon package, or use `cfx run` to test in a newly launched Firefox. 
