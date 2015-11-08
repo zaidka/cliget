@@ -9,6 +9,7 @@
   "id": "cliget@zaidabdulla.com",
   "icon": "data/icon.png",
   "icon64": "data/icon64.png",
+  "main": "lib/main.js",
 
   "permissions": {"private-browsing": true},
 
