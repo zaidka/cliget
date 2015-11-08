@@ -68,5 +68,19 @@
     "description": "Add extra command-line arguments to be appended to the aria2c command.",
     "type": "string",
     "value": "--async-dns=false --continue=true --file-allocation=none --max-connection-per-server=8"
+  },
+  {
+    "name": "youtube-dl",
+    "title": "youtube-dl",
+    "description": "Generate youtube-dl commands.",
+    "type": "bool",
+    "value": false
+  },
+  {
+    "name": "youtube-dl.options",
+    "title": "Extra youtube-dl options",
+    "description": "Add extra command-line arguments to be appended to the youtube-dl command.",
+    "type": "string",
+    "value": ""
   }]
 }
