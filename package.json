@@ -15,7 +15,7 @@
 
   "preferences" : [{
     "name": "use_double_quotes",
-    "title": "Double quotation marks",
+    "title": "Escape with double-quotes",
     "description": "Use double quotation marks (\") for command-line arguments. Enable this if you plan to *execute* the commands on a Windows machine.",
     "type": "bool",
     "value": false
