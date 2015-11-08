@@ -14,4 +14,6 @@ You can add your own parameters to be included in the commands. Set that under "
 Development
 -----------
 
-This addon is built with the [Addon-SDK](https://addons.mozilla.org/en-US/developers/builder). Install and activate the SDK and then run `cfx xpi` to build the "cliget.xpi" addon package, or use `cfx run` to test in a newly launched Firefox. 
+This addon is built with the [Addon-SDK](https://addons.mozilla.org/en-US/developers/builder).  
+Install and activate the SDK and then run `jpm xpi` to build the "cliget.xpi"
+addon package, or use `jpm run` to test in a newly launched Firefox.
