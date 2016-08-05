@@ -82,5 +82,12 @@
     "description": "Add extra command-line arguments to be appended to the youtube-dl command.",
     "type": "string",
     "value": ""
+  },
+  {
+    "name": "request_header_cache_size",
+    "title": "Request header cache size",
+    "description": "The number of requests headers that will be cached in e10s mode",
+    "type": "integer",
+    "value": 100
   }]
 }
