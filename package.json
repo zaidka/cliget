@@ -1,7 +1,7 @@
 {
   "name": "cliget",
   "title": "cliget",
-  "description": "Download protected files using curl, wget, or aria2",
+  "description": "Download protected files using curl, wget, aria2, or saldl",
   "author": "Zaid Abdulla (http://zaidabdulla.com)",
   "homepage": "https://github.com/zaidka/cliget",
   "license": "MPL 2.0",
@@ -73,6 +73,20 @@
     "description": "Add extra command-line arguments to be appended to the aria2c command.",
     "type": "string",
     "value": "--async-dns=false --continue=true --file-allocation=none --max-connection-per-server=8"
+  },
+  {
+    "name": "saldl",
+    "title": "saldl",
+    "description": "Generate saldl commands.",
+    "type": "bool",
+    "value": false
+  },
+  {
+    "name": "saldl.options",
+    "title": "Extra saldl options",
+    "description": "Add extra command-line arguments to be appended to the saldl command.",
+    "type": "string",
+    "value": "-r"
   },
   {
     "name": "youtube-dl",
