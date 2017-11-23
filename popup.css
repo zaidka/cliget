@@ -1,0 +1,65 @@
+body {
+  min-width: 400px;
+  max-width: 800px;
+}
+
+textarea {
+  border: 0;
+  font-family: monospace;
+  margin: 5px;
+  font-size: inherit;
+  resize: none;
+  color: #1a1a1a;
+}
+
+.options {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.06);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  color: #1a1a1a;
+}
+
+.reset {
+  float: right;
+  font-size: 80%;
+}
+
+input[type="text"] {
+  font-family: monospace;
+}
+
+label {
+  margin-right: 1em;
+  line-height: 2.00;
+  display: inline-block;
+}
+
+label.text-input {
+  display: block;
+  margin: 0;
+  clear: both;
+}
+
+label.text-input input[type="text"] {
+  width: 35em;
+  float: right;
+}
+
+.panel-section-tabs-separator {
+  margin: 8px 0;
+}
+
+.panel-section-tabs-button {
+  text-align: unset;
+  margin: 0;
+  overflow: hidden;
+}
+
+.panel-section-footer-button {
+  text-align: unset;
+  margin: 0;
+}
+
+.file-size {
+  opacity: 0.5;
+}

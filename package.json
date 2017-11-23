@@ -1,0 +1,35 @@
+{
+  "name": "cliget",
+  "version": "2.0.0",
+  "description": "Download login-protected files from the command line.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix ./*.js popup/*.js; web-ext lint",
+    "start:firefox": "web-ext run --source-dir ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaidka/cliget.git"
+  },
+  "keywords": [
+    "cli",
+    "curl",
+    "wget",
+    "aria2",
+    "download",
+    "firefox",
+    "webextensions"
+  ],
+  "author": "Zaid Abdulla <zaid@genieacs.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/zaidka/cliget/issues"
+  },
+  "homepage": "https://github.com/zaidka/cliget#readme",
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-plugin-prettier": "^2.3.1",
+    "prettier": "^1.8.2",
+    "web-ext": "^2.2.2"
+  }
+}

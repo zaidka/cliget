@@ -1,0 +1,29 @@
+{
+  "manifest_version": 2,
+  "name": "cliget",
+  "version": "2.0.0",
+  "description": "Download login-protected files from the command line.",
+
+  "icons": {
+    "48": "icons/cliget.svg",
+    "96": "icons/cliget.svg"
+  },
+  "homepage_url": "https://github.com/zaidka/cliget",
+
+  "permissions": ["webRequest", "storage", "<all_urls>"],
+
+  "background": {
+    "scripts": ["utils.js", "curl.js", "wget.js", "aria2.js", "background.js"]
+  },
+
+  "browser_action": {
+    "browser_style": true,
+    "default_title": "cliget",
+    "default_popup": "popup.html",
+    "theme_icons": [{
+      "dark": "icons/cliget-dark.svg",
+      "light": "icons/cliget-light.svg",
+      "size": 16
+    }]
+  }
+}
