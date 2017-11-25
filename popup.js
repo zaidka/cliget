@@ -23,7 +23,7 @@ function fileSizeToText(size) {
 function renderOptionsElement(body, type, name, value, label, help, callback) {
   const labelEl = document.createElement("label");
   labelEl.title = help;
-  labelEl.for = name;
+  labelEl.htmlFor = name;
 
   const input = document.createElement("input");
   input.id = name;
@@ -35,14 +35,15 @@ function renderOptionsElement(body, type, name, value, label, help, callback) {
   input.onchange = callback;
 
   if (type === "text") {
-    labelEl.classList.add("text-input");
+    labelEl.classList.add("text-input", "browser-style");
     labelEl.appendChild(document.createTextNode(label + ":"));
     labelEl.appendChild(input);
+    body.appendChild(labelEl);
   } else {
-    labelEl.appendChild(input);
     labelEl.appendChild(document.createTextNode(label));
+    body.appendChild(input);
+    body.appendChild(labelEl);
   }
-  body.appendChild(labelEl);
 }
 
 function renderOptions(body, options, callback) {
@@ -67,7 +68,7 @@ function renderOptions(body, options, callback) {
   body.appendChild(reset);
 
   let command = document.createElement("div");
-  command.classList.add("command");
+  command.classList.add("command", "browser-style");
   renderOptionsElement(
     command,
     "radio",
@@ -97,7 +98,7 @@ function renderOptions(body, options, callback) {
   );
 
   let common = document.createElement("div");
-  common.classList.add("common");
+  common.classList.add("common", "browser-style");
   renderOptionsElement(
     common,
     "checkbox",
@@ -118,7 +119,7 @@ function renderOptions(body, options, callback) {
   );
 
   let extra = document.createElement("div");
-  extra.classList.add("extra");
+  extra.classList.add("extra", "browser-style");
 
   if (options.command === "curl")
     renderOptionsElement(
@@ -173,6 +174,7 @@ function showCommand(requestId, options) {
       while (body.firstChild) body.removeChild(body.firstChild);
 
       const textArea = document.createElement("textarea");
+      textArea.classList.add("browser-style");
       textArea.cols = 80;
       textArea.rows = 15;
       textArea.value = cmd;

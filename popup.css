@@ -4,19 +4,17 @@ body {
 }
 
 textarea {
-  border: 0;
-  font-family: monospace;
-  margin: 5px;
-  font-size: inherit;
+  border-width: 0 !important;
+  font-family: monospace !important;
+  margin: 2px !important;
+  padding: 3px !important;
   resize: none;
-  color: #1a1a1a;
 }
 
 .options {
   padding: 10px;
   background-color: rgba(0, 0, 0, 0.06);
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-  color: #1a1a1a;
 }
 
 .reset {
