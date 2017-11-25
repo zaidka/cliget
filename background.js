@@ -131,7 +131,30 @@ function onBeforeRequest(details) {
 
 function onSendHeaders(details) {
   const req = currentRequests.get(details.requestId);
-  if (req) req.headers = details.requestHeaders;
+  if (req) {
+    req.headers = details.requestHeaders;
+  } else if (
+    (details.type === "main_frame" || details.type === "sub_frame") &&
+    details.tabId >= 0 &&
+    details.method === "GET"
+  ) {
+    // Firefox 52 (ESR) doesn't call "onBeforeRequest" because requestBody
+    // property isn't supported
+    const now = Date.now();
+
+    // Just in case of a leak
+    currentRequests.forEach((r, reqId) => {
+      if (r.timestamp + 10000 < now) currentRequests.delete(reqId);
+    });
+
+    currentRequests.set(details.requestId, {
+      id: details.requestId,
+      method: details.method,
+      url: details.url,
+      timestamp: now,
+      headers: details.requestHeaders
+    });
+  }
 }
 
 function onResponseStarted(details) {
