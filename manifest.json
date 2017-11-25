@@ -20,10 +20,19 @@
     "browser_style": true,
     "default_title": "cliget",
     "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/cliget-dark.svg",
+      "32": "icons/cliget-dark.svg"
+    },
     "theme_icons": [{
       "dark": "icons/cliget-dark.svg",
       "light": "icons/cliget-light.svg",
       "size": 16
+    },
+    {
+      "dark": "icons/cliget-dark.svg",
+      "light": "icons/cliget-light.svg",
+      "size": 32
     }]
   }
 }
