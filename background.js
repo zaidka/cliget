@@ -161,7 +161,8 @@ function onResponseStarted(details) {
     if (
       contentType.startsWith("text/html") ||
       contentType.startsWith("text/plain") ||
-      contentType.startsWith("image/")
+      contentType.startsWith("image/") ||
+      contentType.startsWith("application/xml")
     )
       return;
 
