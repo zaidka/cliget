@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "cliget",
-  "version": "2.0.0",
+  "version": "2.0.0a1",
   "description": "Download login-protected files from the command line.",
 
   "icons": {
