@@ -185,6 +185,7 @@ function onResponseStarted(details) {
       contentType.startsWith("text/html") ||
       contentType.startsWith("text/plain") ||
       contentType.startsWith("image/") ||
+      contentType.startsWith("application/xhtml") ||
       contentType.startsWith("application/xml")
     )
       return;
