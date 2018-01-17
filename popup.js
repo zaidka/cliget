@@ -200,10 +200,18 @@ function showCommand(requestId, options) {
     });
 }
 
-function showList(downloadList, highlight) {
+function showList(downloadList, highlight, pageRequest) {
   const body = document.body;
   while (body.firstChild) body.removeChild(body.firstChild);
 
+  let currentPage = document.createElement("div");
+  currentPage.classList.add("panel-section", "panel-section-tabs", "current-page");
+  currentPage.textContent = pageRequest.url;
+  currentPage.onclick = function() {
+      showCommand(pageRequest.id);
+  };
+  body.appendChild(currentPage);
+  
   if (!downloadList.length) {
     let el = document.createElement("div");
     el.style.margin = "20px";
@@ -265,7 +273,11 @@ document.addEventListener("DOMContentLoaded", () => {
     browser.browserAction.getBadgeText({}).then(txt => {
       let highlight = +txt;
       browser.browserAction.setBadgeText({ text: "" });
-      showList(list, highlight);
+      browser.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
+    	  browser.runtime.sendMessage(["getPageRequest", tabs[0].url]).then(pageRequest => {
+    		  showList(list, highlight, pageRequest);
+    	  });
+      });
     });
   });
 });
