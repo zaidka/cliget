@@ -66,5 +66,5 @@ window.getFilenameFromUrl = function(url) {
 
   let i = url.lastIndexOf("/", j);
 
-  return url.slice(i + 1, j);
+  return decodeURIComponent(url.slice(i + 1, j));
 };
