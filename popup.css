@@ -61,3 +61,8 @@ label.text-input input[type="text"] {
 .file-size {
   opacity: 0.5;
 }
+
+.current-page {
+	border-bottom: 2px solid black;
+	margin: 20px;
+}

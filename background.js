@@ -3,6 +3,7 @@
 const MAX_ITEMS = 10;
 
 const downloads = new Map();
+const pages = new Map();
 const currentRequests = new Map();
 
 const defaultOptions = {
@@ -60,9 +61,28 @@ function getDownloadList() {
   return list;
 }
 
+function getPageRequest(pageUrl) {
+  var pageRequest;
+  for (let [reqId, req] of pages)
+	  if (pageUrl == req.url) {
+		  pageRequest = {
+	      id: reqId,
+	      url: req.url,
+	      filename: req.filename,
+	      size: req.size
+	    };
+	  }
+  return pageRequest;
+}
+
 function generateCommand(reqId, options) {
-  const request = downloads.get(reqId);
-  if (!request) throw new Error("Request not found");
+  let request = downloads.get(reqId);
+  if (!request) {
+	  request = pages.get(reqId);
+	  if (!request) {
+		  throw new Error("Request not found");
+	  }
+  }
 
   let excludeHeaders = options.excludeHeaders
     .split(" ")
@@ -94,6 +114,8 @@ function handleMessage(msg) {
   else if (name === "getDownloadList")
     return new Promise(resolve => resolve(getDownloadList()));
   else if (name === "clear") return clear(...args);
+  else if (name === "getPageRequest")
+	  return new Promise(resolve => resolve(getPageRequest(...args)));
   else if (name === "generateCommand")
     return new Promise(resolve => {
       try {
@@ -130,7 +152,7 @@ function onBeforeRequest(details) {
 }
 
 function onSendHeaders(details) {
-  const req = currentRequests.get(details.requestId);
+  const req = currentRequests.get(details.requestId+" "+details.url);
   if (req) {
     req.headers = details.requestHeaders;
   } else if (
@@ -182,27 +204,39 @@ function onResponseStarted(details) {
 
   if (!contentDisposition || !contentDisposition.startsWith("attachment"))
     if (
-      contentType.startsWith("text/html") ||
       contentType.startsWith("text/plain") ||
       contentType.startsWith("image/") ||
       contentType.startsWith("application/xhtml") ||
       contentType.startsWith("application/xml")
-    )
+    ) {
       return;
+    }
+  	if (contentType.startsWith("text/html")) {
+  		// This is a request for a page, store it
+  		storeRequest(pages, details, request);
+  		return;
+    }
 
-  if (!request.filename)
-    request.filename = window.getFilenameFromUrl(request.url);
-
-  downloads.set(details.requestId, request);
+  storeRequest(pagres, details, request);
 
   browser.browserAction.getBadgeText({}).then(txt => {
     browser.browserAction.setBadgeText({ text: `${+txt + 1}` });
   });
 
-  if (downloads.size > MAX_ITEMS) {
-    let keys = Array.from(downloads.keys());
-    keys.slice(0, keys.length - MAX_ITEMS).forEach(k => downloads.delete(k));
-  }
+}
+
+function storeRequest(containerMap, details, request) {
+	if (!request.filename)
+		request.filename = window.getFilenameFromUrl(request.url);
+	
+	containerMap.set(details.requestId, request);
+	
+	if (containerMap.size > MAX_ITEMS) {
+	    let keys = Array.from(containerMap.keys());
+	    keys.slice(0, keys.length - MAX_ITEMS).forEach(k => containerMap.delete(k));
+	}
+	containerMap.set(details.requestId, request);
+	return;
 }
 
 function onBeforeRedirect() {

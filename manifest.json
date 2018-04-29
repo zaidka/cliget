@@ -10,7 +10,7 @@
   },
   "homepage_url": "https://github.com/zaidka/cliget",
 
-  "permissions": ["webRequest", "storage", "<all_urls>"],
+  "permissions": ["webRequest", "storage", "<all_urls>", "tabs"],
 
   "background": {
     "scripts": ["utils.js", "curl.js", "wget.js", "aria2.js", "background.js"]
