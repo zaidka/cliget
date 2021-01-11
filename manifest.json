@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "cliget",
-  "version": "2.0.0a1",
+  "version": "2.1.0",
   "description": "Download login-protected files from the command line.",
 
   "icons": {
@@ -39,7 +39,7 @@
   "applications": {
     "gecko": {
        "id": "cliget@zaidabdulla.com",
-       "strict_min_version": "84.0.0"
+       "strict_min_version": "79.0"
     }
  }
 }
