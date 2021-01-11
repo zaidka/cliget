@@ -260,12 +260,42 @@ function showList(downloadList, highlight) {
   footer.appendChild(clearButton);
 }
 
+function applyTheme(theme) {
+  if (!theme || !theme.colors) return;
+  const colors = theme.colors;
+  const styleEl = document.createElement("style");
+  document.head.appendChild(styleEl);
+  const rules = [
+    `body { color: ${colors.popup_text}; background-color: ${colors.popup}; }`,
+    `.panel-section-tabs { color: ${colors.popup_text}; }`,
+    `.panel-section-footer { color: ${colors.popup_text}; background-color: rgba(128, 128, 128, 0.12); border-top-color: rgba(128, 128, 128, 0.30); }`,
+    `.panel-section-separator { background-color: rgba(128, 128, 128, 0.30); }`,
+    `.options { background-color: rgba(128, 128, 128, 0.12); border-top-color: rgba(128, 128, 128, 0.30); }`,
+  ];
+
+  if (colors.popup_heightlight)
+    rules.push(
+      `.panel-section-tabs-button:hover { color: ${colors.popup_heightlight_text}; background-color: ${colors.popup_heightlight}; }`,
+      `.panel-section-footer-button:hover { color: ${colors.popup_heightlight_text}; background-color: ${colors.popup_heightlight}; }`
+    );
+  else
+    rules.push(
+      `.panel-section-tabs-button:hover { background-color: rgba(128, 128, 128, 0.12); }`,
+      `.panel-section-footer-button:hover { background-color: rgba(128, 128, 128, 0.12); }`
+    );
+
+  for (const rule of rules) styleEl.sheet.insertRule(rule);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  browser.runtime.sendMessage(["getDownloadList"]).then((list) => {
-    browser.browserAction.getBadgeText({}).then((txt) => {
-      let highlight = +txt;
-      browser.browserAction.setBadgeText({ text: "" });
-      showList(list, highlight);
-    });
+  Promise.all([
+    browser.runtime.sendMessage(["getDownloadList"]),
+    browser.browserAction.getBadgeText({}),
+    browser.theme.getCurrent(),
+  ]).then(([list, txt, theme]) => {
+    let highlight = +txt;
+    browser.browserAction.setBadgeText({ text: "" });
+    applyTheme(theme);
+    showList(list, highlight);
   });
 });
