@@ -4,7 +4,7 @@
   "description": "Download login-protected files from the command line.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --fix ./*.js popup/*.js; web-ext lint",
+    "lint": "eslint --fix ./*.js; web-ext lint",
     "start:firefox": "web-ext run --source-dir ./"
   },
   "repository": {
@@ -27,9 +27,9 @@
   },
   "homepage": "https://github.com/zaidka/cliget#readme",
   "devDependencies": {
-    "eslint": "^4.11.0",
-    "eslint-plugin-prettier": "^2.3.1",
-    "prettier": "^1.8.2",
-    "web-ext": "^2.2.2"
+    "eslint": "^7.17.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "prettier": "^2.2.1",
+    "web-ext": "^5.4.1"
   }
 }

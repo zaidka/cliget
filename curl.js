@@ -1,10 +1,10 @@
 "use strict";
 
 function escapeGlobbing(url) {
-  return url.replace(/[[\]{}]/g, m => `\\${m.slice(0, 1)}`);
+  return url.replace(/[[\]{}]/g, (m) => `\\${m.slice(0, 1)}`);
 }
 
-window.curl = function(url, method, headers, payload, filename, options) {
+window.curl = function (url, method, headers, payload, filename, options) {
   const esc = window.escapeShellArg;
 
   let contentType;

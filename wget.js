@@ -1,6 +1,6 @@
 "use strict";
 
-window.wget = function(url, method, headers, payload, filename, options) {
+window.wget = function (url, method, headers, payload, filename, options) {
   const esc = window.escapeShellArg;
 
   let contentType;

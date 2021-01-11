@@ -1,16 +1,16 @@
-window.escapeShellArg = function(arg, doubleQuotes) {
+window.escapeShellArg = function (arg, doubleQuotes) {
   let ret = "";
 
   if (doubleQuotes) {
-    ret = arg.replace(/["\\]/g, m => `\\${m.slice(0, 1)}`);
+    ret = arg.replace(/["\\]/g, (m) => `\\${m.slice(0, 1)}`);
     return `"${ret}"`;
   }
 
-  ret = arg.replace(/'/g, m => `'\\${m.slice(0, 1)}'`);
+  ret = arg.replace(/'/g, (m) => `'\\${m.slice(0, 1)}'`);
   return `'${ret}'`;
 };
 
-window.toQueryString = function(obj) {
+window.toQueryString = function (obj) {
   let parts = [];
   for (let [key, values] of Object.entries(obj))
     if (Array.isArray(values))
@@ -21,7 +21,7 @@ window.toQueryString = function(obj) {
   return parts.join("&");
 };
 
-window.getFilenameFromContentDisposition = function(header) {
+window.getFilenameFromContentDisposition = function (header) {
   let headerL = header.toLowerCase();
 
   let i;
@@ -59,7 +59,7 @@ window.getFilenameFromContentDisposition = function(header) {
   return null;
 };
 
-window.getFilenameFromUrl = function(url) {
+window.getFilenameFromUrl = function (url) {
   let j = url.indexOf("?");
   if (j === -1) j = url.indexOf("#");
   if (j === -1) j = url.length;

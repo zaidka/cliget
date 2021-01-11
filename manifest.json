@@ -39,7 +39,7 @@
   "applications": {
     "gecko": {
        "id": "cliget@zaidabdulla.com",
-       "strict_min_version": "52.0"
+       "strict_min_version": "84.0.0"
     }
  }
 }

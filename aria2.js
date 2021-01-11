@@ -1,6 +1,6 @@
 "use strict";
 
-window.aria2 = function(url, method, headers, payload, filename, options) {
+window.aria2 = function (url, method, headers, payload, filename, options) {
   if (method !== "GET") throw new Error("Unsupported HTTP method");
 
   const esc = window.escapeShellArg;

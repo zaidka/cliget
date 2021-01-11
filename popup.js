@@ -161,7 +161,7 @@ function renderOptions(body, options, callback) {
 
 function showCommand(requestId, options) {
   if (!options) {
-    browser.runtime.sendMessage(["getOptions"]).then(opts => {
+    browser.runtime.sendMessage(["getOptions"]).then((opts) => {
       showCommand(requestId, opts);
     });
     return;
@@ -169,7 +169,7 @@ function showCommand(requestId, options) {
 
   browser.runtime
     .sendMessage(["generateCommand", requestId, options])
-    .then(cmd => {
+    .then((cmd) => {
       const body = document.body;
       while (body.firstChild) body.removeChild(body.firstChild);
 
@@ -181,15 +181,15 @@ function showCommand(requestId, options) {
 
       let optionsDiv = document.createElement("div");
       optionsDiv.classList.add("options");
-      renderOptions(optionsDiv, options, optionsUpdate => {
+      renderOptions(optionsDiv, options, (optionsUpdate) => {
         if (!optionsUpdate)
-          browser.runtime.sendMessage(["resetOptions"]).then(newOptions => {
+          browser.runtime.sendMessage(["resetOptions"]).then((newOptions) => {
             showCommand(requestId, newOptions);
           });
         else
           browser.runtime
             .sendMessage(["setOptions", optionsUpdate])
-            .then(newOptions => {
+            .then((newOptions) => {
               showCommand(requestId, newOptions);
             });
       });
@@ -223,7 +223,7 @@ function showList(downloadList, highlight) {
     const buttonElement = document.createElement("div");
     buttonElement.classList.add("panel-section-tabs-button");
     buttonElement.title = req.url;
-    buttonElement.onclick = function() {
+    buttonElement.onclick = function () {
       showCommand(req.id);
     };
 
@@ -254,15 +254,15 @@ function showList(downloadList, highlight) {
   let clearButton = document.createElement("div");
   clearButton.classList.add("panel-section-footer-button");
   clearButton.textContent = "Clear all";
-  clearButton.onclick = function() {
+  clearButton.onclick = function () {
     browser.runtime.sendMessage(["clear"]).then(() => window.close());
   };
   footer.appendChild(clearButton);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  browser.runtime.sendMessage(["getDownloadList"]).then(list => {
-    browser.browserAction.getBadgeText({}).then(txt => {
+  browser.runtime.sendMessage(["getDownloadList"]).then((list) => {
+    browser.browserAction.getBadgeText({}).then((txt) => {
       let highlight = +txt;
       browser.browserAction.setBadgeText({ text: "" });
       showList(list, highlight);

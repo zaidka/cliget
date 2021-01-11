@@ -11,12 +11,12 @@ const defaultOptions = {
   command: "curl",
   curlOptions: "",
   wgetOptions: "",
-  aria2Options: ""
+  aria2Options: "",
 };
 
 function getOptions() {
-  return new Promise(resolve => {
-    browser.storage.local.get().then(res => {
+  return new Promise((resolve) => {
+    browser.storage.local.get().then((res) => {
       res = Object.assign({}, defaultOptions, res);
       resolve(res);
     });
@@ -24,9 +24,9 @@ function getOptions() {
 }
 
 function setOptions(values) {
-  new Promise(resolve => {
+  new Promise((resolve) => {
     browser.storage.local.set(values).then(() =>
-      getOptions().then(c => {
+      getOptions().then((c) => {
         resolve(c);
       })
     );
@@ -34,9 +34,9 @@ function setOptions(values) {
 }
 
 function resetOptions() {
-  new Promise(resolve => {
+  new Promise((resolve) => {
     browser.storage.local.clear().then(() =>
-      getOptions().then(c => {
+      getOptions().then((c) => {
         resolve(c);
       })
     );
@@ -54,7 +54,7 @@ function getDownloadList() {
       id: reqId,
       url: req.url,
       filename: req.filename,
-      size: req.size
+      size: req.size,
     });
 
   return list;
@@ -66,10 +66,10 @@ function generateCommand(reqId, options) {
 
   let excludeHeaders = options.excludeHeaders
     .split(" ")
-    .map(h => h.toLowerCase());
+    .map((h) => h.toLowerCase());
 
   let headers = request.headers.filter(
-    h => excludeHeaders.indexOf(h.name.toLowerCase()) === -1
+    (h) => excludeHeaders.indexOf(h.name.toLowerCase()) === -1
   );
 
   const cmd = window[options.command](
@@ -92,10 +92,10 @@ function handleMessage(msg) {
   else if (name === "setOptions") return setOptions(...args);
   else if (name === "resetOptions") return resetOptions();
   else if (name === "getDownloadList")
-    return new Promise(resolve => resolve(getDownloadList()));
+    return new Promise((resolve) => resolve(getDownloadList()));
   else if (name === "clear") return clear(...args);
   else if (name === "generateCommand")
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       try {
         resolve(generateCommand(...args));
       } catch (err) {
@@ -123,7 +123,7 @@ function onBeforeRequest(details) {
       method: details.method,
       url: details.url,
       timestamp: now,
-      payload: details.requestBody
+      payload: details.requestBody,
     };
     currentRequests.set(details.requestId, req);
   }
@@ -152,7 +152,7 @@ function onSendHeaders(details) {
       method: details.method,
       url: details.url,
       timestamp: now,
-      headers: details.requestHeaders
+      headers: details.requestHeaders,
     });
   }
 }
@@ -195,13 +195,13 @@ function onResponseStarted(details) {
 
   downloads.set(details.requestId, request);
 
-  browser.browserAction.getBadgeText({}).then(txt => {
+  browser.browserAction.getBadgeText({}).then((txt) => {
     browser.browserAction.setBadgeText({ text: `${+txt + 1}` });
   });
 
   if (downloads.size > MAX_ITEMS) {
     let keys = Array.from(downloads.keys());
-    keys.slice(0, keys.length - MAX_ITEMS).forEach(k => downloads.delete(k));
+    keys.slice(0, keys.length - MAX_ITEMS).forEach((k) => downloads.delete(k));
   }
 }
 
@@ -215,11 +215,11 @@ function onErrorOccurred(details) {
 }
 
 browser.webRequest.onBeforeRedirect.addListener(onBeforeRedirect, {
-  urls: ["<all_urls>"]
+  urls: ["<all_urls>"],
 });
 
 browser.webRequest.onErrorOccurred.addListener(onErrorOccurred, {
-  urls: ["<all_urls>"]
+  urls: ["<all_urls>"],
 });
 
 browser.webRequest.onBeforeRequest.addListener(
@@ -236,7 +236,7 @@ browser.webRequest.onSendHeaders.addListener(
 browser.webRequest.onResponseStarted.addListener(
   onResponseStarted,
   {
-    urls: ["<all_urls>"]
+    urls: ["<all_urls>"],
   },
   ["responseHeaders"]
 );
