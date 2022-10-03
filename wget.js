@@ -32,7 +32,7 @@ window.wget = function (url, method, headers, payload, filename, options) {
   if (payload)
     if (payload.formData) {
       if (contentType === "application/x-www-form-urlencoded")
-        parts.push(`--body-data ${window.toQueryString(payload.formData)}`);
+        parts.push(`--body-data ${esc(window.toQueryString(payload.formData))}`);
       else if (contentType.startsWith("multipart/form-data;"))
         throw new Error("Unsupported upload data");
     } else if (payload.raw) {
